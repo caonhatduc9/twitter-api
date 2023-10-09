@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules/
 dist/
+.env
 
 # TypeScript build artifacts
 *.tsbuildinfo
