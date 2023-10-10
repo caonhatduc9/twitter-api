@@ -1,9 +1,12 @@
 import { Request, Response } from 'express';
+import User from '~/models/schemas/user.schema';
+import databaseService from '~/services/database.services';
+import usersServices from '~/services/users.services';
 // import bcrypt from 'bcrypt';
 // import jwt from 'jsonwebtoken';
 // import User from '../models/user.model';
 
-const login = async (req: Request, res: Response) => {
+export const loginController = async (req: Request, res: Response) => {
   const { username, password } = req.body;
   res.json({ username: username, password: password });
   // try {
@@ -27,4 +30,13 @@ const login = async (req: Request, res: Response) => {
   // }
 };
 
-export default login;
+export const registerController = async (req: Request, res: Response) => {
+  console.log('check');
+  const { email, password } = req.body;
+  try {
+    const result = await usersServices.register({ email, password });
+    res.status(200).json({ message: 'User created successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Something went wrong' });
+  }
+};

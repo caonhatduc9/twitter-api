@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { validateLogin } from '../middlewares/users.middlewares';
-import loginController from '../controllers/users.controllers';
+import { loginController, registerController } from '../controllers/users.controllers';
 const usersRouter = Router();
 
 // usersRouter.use((req, res, next) => {
@@ -9,5 +9,6 @@ const usersRouter = Router();
 // });
 
 usersRouter.post('/login', validateLogin, loginController);
+usersRouter.post('/register', registerController);
 
 export default usersRouter;

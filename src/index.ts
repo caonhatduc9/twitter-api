@@ -6,7 +6,7 @@ import databaseService from './services/database.services';
 databaseService.connect();
 
 app.use(express.json());
-app.use('/user', usersRouter);
+app.use('/users', usersRouter);
 
 app.listen(3001, () => {
   console.log('server is running');
